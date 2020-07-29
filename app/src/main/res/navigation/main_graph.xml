@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.paul9834.alcoholapp.ui.MainFragment"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        android:label="Home"
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_detallesTragoFragment"
             app:destination="@id/detallesTragoFragment" />
@@ -17,6 +17,6 @@
     <fragment
         android:id="@+id/detallesTragoFragment"
         android:name="com.paul9834.alcoholapp.ui.DetallesTragoFragment"
-        android:label="fragment_detalles_trago"
+        android:label="Tragos"
         tools:layout="@layout/fragment_detalles_trago" />
 </navigation>

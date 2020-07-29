@@ -5,10 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+
 import com.paul9834.alcoholapp.R
+import kotlinx.android.synthetic.main.fragment_main.*
 
 
 class MainFragment : Fragment() {
+
+
+
 
 
     override fun onCreateView(
@@ -18,6 +24,19 @@ class MainFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
-    
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+        btn_ir_detalles.setOnClickListener{
+            findNavController().navigate(R.id.detallesTragoFragment)
+        }
+
+
+    }
+
+
+
 
 }

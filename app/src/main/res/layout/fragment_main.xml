@@ -16,7 +16,7 @@
         android:text="FRAGMENT LISTA DE TRAGOS" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/irDetalles"
+        android:id="@+id/btn_ir_detalles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
