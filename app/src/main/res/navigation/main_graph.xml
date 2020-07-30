@@ -13,10 +13,18 @@
         <action
             android:id="@+id/action_mainFragment_to_detallesTragoFragment"
             app:destination="@id/detallesTragoFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_favoriteDrinkFragment"
+            app:destination="@id/favoriteDrinkFragment" />
     </fragment>
     <fragment
         android:id="@+id/detallesTragoFragment"
         android:name="com.paul9834.alcoholapp.ui.DetallesTragoFragment"
         android:label="Tragos"
         tools:layout="@layout/fragment_detalles_trago" />
+    <fragment
+        android:id="@+id/favoriteDrinkFragment"
+        android:name="com.paul9834.alcoholapp.ui.FavoriteDrinkFragment"
+        android:label="Favorite Drink"
+        tools:layout="@layout/fragment_favorite_drink" />
 </navigation>

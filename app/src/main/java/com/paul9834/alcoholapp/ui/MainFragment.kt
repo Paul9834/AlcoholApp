@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.transition.MaterialFadeThrough
 import com.google.android.material.transition.SlideDistanceProvider
+import com.paul9834.alcoholapp.AppDataBase
 
 import com.paul9834.alcoholapp.R
 import com.paul9834.alcoholapp.data.model.DataSource
@@ -33,14 +35,15 @@ import kotlinx.android.synthetic.main.fragment_main.*
 class MainFragment : Fragment(), MainAdapter.onTragoClickListener {
 
 
-    private val viewModel by viewModels<MainViewModel> {
-        VMFactory(RepoImpl(DataSource()))
+    private val viewModel by activityViewModels<MainViewModel> {
+        VMFactory(RepoImpl(DataSource(AppDataBase.getDatabase(requireActivity().applicationContext))))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         enterTransition = MaterialFadeThrough()
+
 
 
     }
@@ -61,6 +64,10 @@ class MainFragment : Fragment(), MainAdapter.onTragoClickListener {
         setupObservers ()
 
         swiperefresh.isEnabled = false
+
+        btn_ir_favoritos.setOnClickListener{
+            findNavController().navigate(R.id.action_mainFragment_to_favoriteDrinkFragment)
+        }
 
 
     }

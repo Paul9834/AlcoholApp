@@ -20,7 +20,7 @@ class MainAdapter
 
 
     interface onTragoClickListener {
-        fun onTragoClick (drink: Drink)
+        fun onTragoClick (drink: Drink, position: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
@@ -45,7 +45,7 @@ class MainAdapter
             itemView.txt_description.text = item.descripcion
 
             itemView.card.setOnClickListener{
-                itemClickListener.onTragoClick(item) }
+                itemClickListener.onTragoClick(item, position) }
         }
 
     }
