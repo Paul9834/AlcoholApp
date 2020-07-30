@@ -1,1 +1,2 @@
-# AlcoholApp
+# AlcoholApp - MVVM
+
