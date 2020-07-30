@@ -7,7 +7,7 @@ import com.paul9834.alcoholapp.data.model.DrinkEntity
 @Dao
 interface TragosDAO {
 
-    @Query("SELECT * FROM DrinkEntity")
+    @Query("SELECT * FROM tragosEntity")
     suspend fun getFavoriteAllDrinks():List<DrinkEntity>
 
 
@@ -15,7 +15,7 @@ interface TragosDAO {
     suspend fun insertFavorite(trago:DrinkEntity)
 
     @Delete
-    suspend fun deleteDrink(drink: Drink)
+    suspend fun deleteDrink(drink: DrinkEntity)
 
 
 }

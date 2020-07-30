@@ -9,41 +9,36 @@ import kotlinx.android.parcel.Parcelize
 
 
 @Parcelize
-data class Drink (
-
+data class Drink(
     @SerializedName("idDrink")
-    val tradoId: String = "",
+    val tragoId:String = "",
     @SerializedName("strDrinkThumb")
     val imagen: String = "",
     @SerializedName("strDrink")
     val nombre: String = "",
     @SerializedName("strInstructions")
     val descripcion: String = "",
-
     @SerializedName("strAlcoholic")
     val hasAlcohol:String = "Non_Alcoholic"
-
-
 ):Parcelable
 
-data class DrinkList (
+
+data class DrinkList(
     @SerializedName("drinks")
-    val drinkList:List<Drink>)
+    val drinksList:List<Drink> = listOf()
+)
 
 
-@Entity
+@Entity(tableName = "tragosEntity")
 data class DrinkEntity(
-    @PrimaryKey()
-    val tradoId: String,
-
-    @ColumnInfo(name ="trago_imagen")
+    @PrimaryKey
+    val tragoId: String,
+    @ColumnInfo(name = "trago_imagen")
     val imagen: String = "",
-    @ColumnInfo(name ="trago_nombre")
+    @ColumnInfo(name = "trago_nombre")
     val nombre: String = "",
-    @ColumnInfo(name ="trago_description")
+    @ColumnInfo(name = "trago_descripcion")
     val descripcion: String = "",
-    @ColumnInfo(name ="trago_alcoholic")
+    @ColumnInfo(name = "trago_has_alcohol")
     val hasAlcohol:String = "Non_Alcoholic"
-
-
 )

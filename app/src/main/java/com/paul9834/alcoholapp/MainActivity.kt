@@ -2,15 +2,9 @@ package com.paul9834.alcoholapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.paul9834.alcoholapp.data.model.DataSource
-import com.paul9834.alcoholapp.domain.RepoImpl
-import com.paul9834.alcoholapp.ui.viewmodel.MainViewModel
-import com.paul9834.alcoholapp.ui.viewmodel.VMFactory
 
 class MainActivity : AppCompatActivity() {
 

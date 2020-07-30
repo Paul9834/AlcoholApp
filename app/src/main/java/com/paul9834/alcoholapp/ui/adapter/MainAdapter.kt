@@ -16,11 +16,17 @@ import kotlinx.android.synthetic.main.tragos_row.view.*
 class MainAdapter
     (private val context: Context,
 
-     private val drinks:List<Drink>, private val itemClickListener:onTragoClickListener): RecyclerView.Adapter<BaseViewHolder<*>>(){
+     private val drinks:MutableList<Drink>, private val itemClickListener:onTragoClickListener): RecyclerView.Adapter<BaseViewHolder<*>>(){
 
 
     interface onTragoClickListener {
         fun onTragoClick (drink: Drink, position: Int)
+    }
+
+    fun deleteDrink(position: Int){
+        drinks.removeAt(position)
+        notifyDataSetChanged()
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
@@ -45,7 +51,8 @@ class MainAdapter
             itemView.txt_description.text = item.descripcion
 
             itemView.card.setOnClickListener{
-                itemClickListener.onTragoClick(item, position) }
+                itemClickListener.onTragoClick(item, position)
+            }
         }
 
     }

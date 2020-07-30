@@ -49,7 +49,7 @@ class MainViewModel(private val repo:Repo): ViewModel() {
 
     }
 
-    fun deleteDrink(drink: Drink) {
+    fun deleteDrink(drink: DrinkEntity) {
         viewModelScope.launch {
              repo.deleteTrago(drink)
         }

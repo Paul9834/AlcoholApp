@@ -9,13 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.google.android.material.transition.MaterialFadeThrough
 import com.google.android.material.transition.SlideDistanceProvider
 import com.paul9834.alcoholapp.AppDataBase
 import com.paul9834.alcoholapp.R
-import com.paul9834.alcoholapp.data.model.DataSource
+import com.paul9834.alcoholapp.data.model.DataSourceImpl
 import com.paul9834.alcoholapp.data.model.Drink
 import com.paul9834.alcoholapp.data.model.DrinkEntity
 import com.paul9834.alcoholapp.domain.RepoImpl
@@ -29,7 +28,7 @@ class DetallesTragoFragment : Fragment() {
 
 
     private val viewModel by activityViewModels<MainViewModel> {
-        VMFactory(RepoImpl(DataSource(AppDataBase.getDatabase(requireActivity().applicationContext))))
+        VMFactory(RepoImpl(DataSourceImpl(AppDataBase.getDatabase(requireActivity().applicationContext))))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,7 +74,7 @@ class DetallesTragoFragment : Fragment() {
 
 
         btn_guardar_trago.setOnClickListener{
-            viewModel.guardarTrago(DrinkEntity(drink.tradoId, drink.imagen, drink.nombre, drink.descripcion, drink.hasAlcohol))
+            viewModel.guardarTrago(DrinkEntity(drink.tragoId, drink.imagen, drink.nombre, drink.descripcion, drink.hasAlcohol))
             Toast.makeText(requireContext(), "Se ha guardado como favoritos", Toast.LENGTH_SHORT).show()
         }
 

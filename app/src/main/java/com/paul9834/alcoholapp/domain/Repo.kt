@@ -10,7 +10,7 @@ interface Repo {
    suspend fun getTragosFavorites() : Resource<List<DrinkEntity>>
    suspend fun insertTrago (trago:DrinkEntity)
 
-   suspend fun deleteTrago(trago:Drink)
+   suspend fun deleteTrago(trago:DrinkEntity)
 
 
 

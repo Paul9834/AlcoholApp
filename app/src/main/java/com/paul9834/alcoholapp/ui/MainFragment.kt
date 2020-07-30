@@ -1,28 +1,22 @@
 package com.paul9834.alcoholapp.ui
 
-import android.opengl.Visibility
 import android.os.Bundle
-import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView
 import android.widget.Toast
-import androidx.activity.viewModels
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.transition.MaterialFadeThrough
-import com.google.android.material.transition.SlideDistanceProvider
 import com.paul9834.alcoholapp.AppDataBase
 
 import com.paul9834.alcoholapp.R
-import com.paul9834.alcoholapp.data.model.DataSource
+import com.paul9834.alcoholapp.data.model.DataSourceImpl
 import com.paul9834.alcoholapp.data.model.Drink
 import com.paul9834.alcoholapp.domain.RepoImpl
 import com.paul9834.alcoholapp.ui.adapter.MainAdapter
@@ -36,7 +30,7 @@ class MainFragment : Fragment(), MainAdapter.onTragoClickListener {
 
 
     private val viewModel by activityViewModels<MainViewModel> {
-        VMFactory(RepoImpl(DataSource(AppDataBase.getDatabase(requireActivity().applicationContext))))
+        VMFactory(RepoImpl(DataSourceImpl(AppDataBase.getDatabase(requireActivity().applicationContext))))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,7 +73,7 @@ class MainFragment : Fragment(), MainAdapter.onTragoClickListener {
                     swiperefresh.isRefreshing = true
                 }
                 is Resource.Success -> {
-                    rv_tragos.adapter = MainAdapter(requireContext(), result.data, this)
+                    rv_tragos.adapter = MainAdapter(requireContext(), result.data.toMutableList(), this)
 
                     swiperefresh.isRefreshing = false
                 }
@@ -94,8 +88,7 @@ class MainFragment : Fragment(), MainAdapter.onTragoClickListener {
 
     private fun setupSearchView () {
 
-        searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
-
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 viewModel.setTrago(query!!)
                 return false
@@ -104,7 +97,6 @@ class MainFragment : Fragment(), MainAdapter.onTragoClickListener {
             override fun onQueryTextChange(newText: String?): Boolean {
                 return false
             }
-
         })
 
     }
@@ -116,15 +108,12 @@ class MainFragment : Fragment(), MainAdapter.onTragoClickListener {
 
     }
 
-    override fun onTragoClick(drink: Drink) {
 
+    override fun onTragoClick(drink: Drink, position: Int) {
         val bundle = Bundle()
         bundle.putParcelable("drink", drink)
-       findNavController().navigate(R.id.detallesTragoFragment, bundle)
-
-
+        findNavController().navigate(R.id.detallesTragoFragment, bundle)
     }
-
 
 
 }
