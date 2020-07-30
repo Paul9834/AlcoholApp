@@ -21,16 +21,15 @@ class MainViewModel(private val repo:Repo): ViewModel() {
         setTrago("Margarita")
     }
 
-    val fetchTragosList = tragosData.distinctUntilChanged().switchMap {nombreTrago ->
+    val fetchTragosList = tragosData.distinctUntilChanged().switchMap { nombreTrago ->
         liveData(Dispatchers.IO) {
             emit(Resource.Loading())
-            try {
+            try{
                 emit(repo.getTragosList(nombreTrago))
-            } catch (e: Exception) {
+            }catch (e: Exception){
                 emit(Resource.Failure(e))
             }
         }
-
     }
 
     fun guardarTrago(trago:DrinkEntity) {
@@ -42,7 +41,7 @@ class MainViewModel(private val repo:Repo): ViewModel() {
     fun getTragosFavorites () = liveData(Dispatchers.IO) {
         emit(Resource.Loading())
         try {
-            emit(repo.getTragosFavorites())
+            emit(repo.getTragosFavoritos())
         } catch (e: Exception) {
             emit(Resource.Failure(e))
         }
@@ -51,7 +50,7 @@ class MainViewModel(private val repo:Repo): ViewModel() {
 
     fun deleteDrink(drink: DrinkEntity) {
         viewModelScope.launch {
-             repo.deleteTrago(drink)
+             repo.deleteDrink(drink)
         }
 
     }

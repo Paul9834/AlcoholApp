@@ -8,10 +8,6 @@ import com.paul9834.alcoholapp.vo.RetrofitClient
 class DataSourceImpl(private val appDataBase: AppDataBase):DataSource {
 
     override suspend fun getTragoByName (tragoName:String):Resource<List<Drink>> {
-
-
-
-
         return Resource.Success(RetrofitClient.webservice.getTragosByName(tragoName).drinksList)
     }
 

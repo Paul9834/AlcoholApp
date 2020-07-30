@@ -1,6 +1,7 @@
 package com.paul9834.alcoholapp.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -90,6 +91,7 @@ class MainFragment : Fragment(), MainAdapter.onTragoClickListener {
 
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
+                Log.i("well", " this worked");
                 viewModel.setTrago(query!!)
                 return false
             }
