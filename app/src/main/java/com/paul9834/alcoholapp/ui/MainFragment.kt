@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
 import com.paul9834.alcoholapp.R
 import com.paul9834.alcoholapp.data.model.DataSource
@@ -48,10 +49,12 @@ class MainFragment : Fragment(), MainAdapter.onTragoClickListener {
         viewModel.fetchTragosList.observe(viewLifecycleOwner, Observer { result ->
             when (result) {
                 is Resource.Loading -> {
+                    swiperefresh.isRefreshing = true
                 }
                 is Resource.Success -> {
                     rv_tragos.adapter = MainAdapter(requireContext(), result.data, this)
-                    swiperefresh.isRefreshing = false
+
+                   swiperefresh.isRefreshing = false
                 }
                 is Resource.Failure -> {
                     Toast.makeText(requireContext(), "Ocurrio un error en cargar los datos ${result.exception}", Toast.LENGTH_SHORT).show()
@@ -78,6 +81,7 @@ class MainFragment : Fragment(), MainAdapter.onTragoClickListener {
 
 
     }
+
 
 
 }

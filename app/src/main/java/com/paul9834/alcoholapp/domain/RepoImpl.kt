@@ -6,8 +6,8 @@ import com.paul9834.alcoholapp.vo.Resource
 
 class RepoImpl (private val dataSource: DataSource): Repo {
 
-    override fun getTragosList(): Resource<List<Drink>> {
-        return dataSource.generateTragosList
+    suspend override fun getTragosList(tragoName:String): Resource<List<Drink>> {
+        return dataSource.getTragoByName(tragoName)
     }
 
 

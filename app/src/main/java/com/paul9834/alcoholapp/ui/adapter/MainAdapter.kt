@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.tragos_row.view.*
 class MainAdapter
     (private val context: Context,
 
-                   private val drinks:List<Drink>, private val itemClickListener:onTragoClickListener): RecyclerView.Adapter<BaseViewHolder<*>>(){
+     private val drinks:List<Drink>, private val itemClickListener:onTragoClickListener): RecyclerView.Adapter<BaseViewHolder<*>>(){
 
 
     interface onTragoClickListener {

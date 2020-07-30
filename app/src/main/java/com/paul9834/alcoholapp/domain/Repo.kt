@@ -4,9 +4,5 @@ import com.paul9834.alcoholapp.data.model.Drink
 import com.paul9834.alcoholapp.vo.Resource
 
 interface Repo {
-
-
-   fun getTragosList(): Resource<List<Drink>>
-
-
+   suspend fun getTragosList(tragoName:String): Resource<List<Drink>>
 }
